@@ -1,0 +1,19 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+# RewriteCond %{HTTPS} off
+# RewriteCond %{HTTP:X-Forwarded-SSL} !on
+# RewriteCond %{HTTP_HOST} ^powrserver2\.com$ [OR]
+# RewriteCond %{HTTP_HOST} ^www\.powrserver2\.com$
+# RewriteRule ^/?$ "https\:\/\/powrserver2\.com\/" [R=301,L]
+
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # For POST requests, you may need to add the following line
+    RewriteCond %{REQUEST_METHOD} !^POST$ [NC]
+</IfModule>

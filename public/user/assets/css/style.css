@@ -1,0 +1,69 @@
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: #849c3d;
+}
+p > strong >u {
+    font-size: 10pt;
+    line-height: 107%;
+    font-family: 'arial' , sans-serif;
+}
+p> strong > span,p > span ,ol >li>span, ul >li>span{
+    font-size: 10pt;
+    font-family: 'arial' , sans-serif;
+}
+
+.navbar-brand {
+    margin-right: 0px;
+}
+
+.btn-primary {
+    background-color: #849c3d !important;
+    border-color: #849c3d !important;
+}
+
+.btn.btn-primary:hover {
+    background: #506416 !important;
+    border-color: #506416 !important;
+}
+
+.navbar-brand img {
+    width: 100%;
+}
+
+.job-details {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .05), 0 2px 6px rgba(0, 0, 0, .15);
+}
+
+.job-details {
+    background-color: white;
+}
+
+@media screen and (min-width: 768px) {
+    .navbar-brand img {
+        width: 100%;
+    }
+
+    .navbar .container-fluid {
+        flex-direction: column;
+    }
+
+    .navbar .navbar-nav .nav-item {
+        padding: 0.5em 1em;
+    }
+
+    .navbar-nav {
+        border-bottom: 2px solid #fff;
+    }
+}
+
+.navbar .navbar-nav .nav-link {
+    color: #fff;
+    font-size: 1.1em;
+}
+
+.navbar .navbar-nav {
+    border-top: 2px solid #fff;
+    margin-top: 0.5em;
+}
+
+

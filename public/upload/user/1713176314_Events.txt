@@ -1,0 +1,10 @@
+customer.deleted :
+Occurs whenever a customer is deleted.
+payment_method.detached :
+Occurs whenever a payment method is detached from a customer.
+customer.subscription.deleted :
+Occurs whenever a customer’s subscription ends.
+invoice.payment_failed :
+Occurs whenever an invoice payment attempt fails, due either to a declined payment or to the lack of a stored payment method.
+
+

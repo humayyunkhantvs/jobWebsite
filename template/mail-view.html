@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <meta name="description" content="CRMS - Bootstrap Admin Template">
+		<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+        <meta name="author" content="Dreamguys - Bootstrap Admin Template">
+        <meta name="robots" content="noindex, nofollow">
+        <title>Mail view - CRMS admin template</title>
+		
+		<!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+		
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		
+		<!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+        <!-- Feathericon CSS -->
+		<link rel="stylesheet" href="assets/css/feather.css">
+
+        <!--font style-->
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+		
+		<!-- Lineawesome CSS -->
+        <link rel="stylesheet" href="assets/css/line-awesome.min.css">
+
+         <!-- Summernote CSS -->
+    	<link rel="stylesheet" href="assets/plugins/summernote/dist/summernote-bs4.css">
+
+    	<!-- Theme CSS -->
+        <link rel="stylesheet" href="assets/css/theme-settings.css">
+
+		
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="assets/css/style.css" class="themecls">
+
+		
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="assets/js/html5shiv.min.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+    </head>
+     <body id="skin-color" class="inter">
+		 
+		<!-- Main Wrapper -->
+        <div class="main-wrapper">
+		
+			<!-- Header -->
+            <div class="header" id="heading">
+			
+				<!-- Logo -->
+                <div class="header-left">
+                    <a href="index.html" class="logo">
+						<img src="assets/img/logo.png"  alt="Logo" class="sidebar-logo">
+						<img src="assets/img/s-logo.png"  alt="Logo" class="mini-sidebar-logo">
+					</a>
+                </div>
+				<!-- /Logo -->
+				
+				<a id="toggle_btn" href="javascript:void(0);">
+					<span class="bar-icon">
+						<span></span>
+						<span></span>
+						<span></span>
+					</span>
+				</a>
+				
+				<!-- Header Title -->
+                <div class="page-title-box">
+					<div class="top-nav-search">
+							<a href="javascript:void(0);" class="responsive-search">
+								<i class="fa fa-search"></i>
+						   </a>
+							<form action="search.html">
+								<input class="form-control" type="text" placeholder="Search here">
+								<button class="btn" type="submit"><i class="fa fa-search"></i></button>
+							</form>
+						</div>
+                </div>
+				<!-- /Header Title -->
+				
+				<a id="mobile_btn" class="mobile_btn" href="#sidebar"><i class="fa fa-bars"></i></a>
+				
+				<!-- Header Menu -->
+				<ul class="nav user-menu">
+				
+					<!-- Search -->
+					<li class="nav-item">
+						
+					</li>
+					<!-- /Search -->
+				
+					<!-- Flag -->
+					<li class="nav-item dropdown has-arrow flag-nav">
+						<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button">
+							<img src="assets/img/flags/us.png" alt="" height="20"> <span>English</span>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right">
+							<a href="javascript:void(0);" class="dropdown-item">
+								<img src="assets/img/flags/us.png" alt="" height="16"> English
+							</a>
+							<a href="javascript:void(0);" class="dropdown-item">
+								<img src="assets/img/flags/fr.png" alt="" height="16"> French
+							</a>
+							<a href="javascript:void(0);" class="dropdown-item">
+								<img src="assets/img/flags/es.png" alt="" height="16"> Spanish
+							</a>
+							<a href="javascript:void(0);" class="dropdown-item">
+								<img src="assets/img/flags/de.png" alt="" height="16"> German
+							</a>
+						</div>
+					</li>
+					<!-- /Flag -->
+				
+					<!-- Notifications -->
+					<li class="nav-item dropdown">
+						<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+							<i class="fa fa-bell-o"></i> <span class="badge rounded-pill">3</span>
+						</a>
+						<div class="dropdown-menu notifications">
+							<div class="topnav-dropdown-header">
+								<span class="notification-title">Notifications</span>
+								<a href="javascript:void(0)" class="clear-noti"> Clear All </a>
+							</div>
+							<div class="noti-content">
+								<ul class="notification-list">
+									<li class="notification-message">
+										<a href="activities.html">
+											<div class="media d-flex">
+												<span class="avatar flex-shrink-0">
+													<img alt="" src="assets/img/profiles/avatar-02.jpg">
+												</span>
+												<div class="media-body flex-grow-1">
+													<p class="noti-details"><span class="noti-title">John Doe</span> added new task <span class="noti-title">Patient appointment booking</span></p>
+													<p class="noti-time"><span class="notification-time">4 mins ago</span></p>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="notification-message">
+										<a href="activities.html">
+											<div class="media d-flex">
+												<span class="avatar flex-shrink-0">
+													<img alt="" src="assets/img/profiles/avatar-03.jpg">
+												</span>
+												<div class="media-body flex-grow-1">
+													<p class="noti-details"><span class="noti-title">Tarah Shropshire</span> changed the task name <span class="noti-title">Appointment booking with payment gateway</span></p>
+													<p class="noti-time"><span class="notification-time">6 mins ago</span></p>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="notification-message">
+										<a href="activities.html">
+											<div class="media d-flex">
+												<span class="avatar flex-shrink-0">
+													<img alt="" src="assets/img/profiles/avatar-06.jpg">
+												</span>
+												<div class="media-body flex-grow-1">
+													<p class="noti-details"><span class="noti-title">Misty Tison</span> added <span class="noti-title">Domenic Houston</span> and <span class="noti-title">Claire Mapes</span> to project <span class="noti-title">Doctor available module</span></p>
+													<p class="noti-time"><span class="notification-time">8 mins ago</span></p>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="notification-message">
+										<a href="activities.html">
+											<div class="media d-flex">
+												<span class="avatar flex-shrink-0">
+													<img alt="" src="assets/img/profiles/avatar-17.jpg">
+												</span>
+												<div class="media-body flex-grow-1">
+													<p class="noti-details"><span class="noti-title">Rolland Webber</span> completed task <span class="noti-title">Patient and Doctor video conferencing</span></p>
+													<p class="noti-time"><span class="notification-time">12 mins ago</span></p>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="notification-message">
+										<a href="activities.html">
+											<div class="media d-flex">
+												<span class="avatar flex-shrink-0">
+													<img alt="" src="assets/img/profiles/avatar-13.jpg">
+												</span>
+												<div class="media-body flex-grow-1">
+													<p class="noti-details"><span class="noti-title">Bernardo Galaviz</span> added new task <span class="noti-title">Private chat module</span></p>
+													<p class="noti-time"><span class="notification-time">2 days ago</span></p>
+												</div>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div class="topnav-dropdown-footer">
+								<a href="activities.html">View all Notifications</a>
+							</div>
+						</div>
+					</li>
+					<!-- /Notifications -->
+					
+					<!-- Message Notifications -->
+					<li class="nav-item dropdown">
+						<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+							<i class="fa fa-comment-o"></i> <span class="badge rounded-pill">8</span>
+						</a>
+						<div class="dropdown-menu notifications">
+							<div class="topnav-dropdown-header">
+								<span class="notification-title">Messages</span>
+								<a href="javascript:void(0)" class="clear-noti"> Clear All </a>
+							</div>
+							<div class="noti-content">
+								<ul class="notification-list">
+									<li class="notification-message">
+										<a href="#">
+											<div class="list-item">
+												<div class="list-left">
+													<span class="avatar">
+														<img alt="" src="assets/img/profiles/avatar-09.jpg">
+													</span>
+												</div>
+												<div class="list-body">
+													<span class="message-author">Richard Miles </span>
+													<span class="message-time">12:28 AM</span>
+													<div class="clearfix"></div>
+													<span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="notification-message">
+										<a href="#">
+											<div class="list-item">
+												<div class="list-left">
+													<span class="avatar">
+														<img alt="" src="assets/img/profiles/avatar-02.jpg">
+													</span>
+												</div>
+												<div class="list-body">
+													<span class="message-author">John Doe</span>
+													<span class="message-time">6 Mar</span>
+													<div class="clearfix"></div>
+													<span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="notification-message">
+										<a href="#">
+											<div class="list-item">
+												<div class="list-left">
+													<span class="avatar">
+														<img alt="" src="assets/img/profiles/avatar-03.jpg">
+													</span>
+												</div>
+												<div class="list-body">
+													<span class="message-author"> Tarah Shropshire </span>
+													<span class="message-time">5 Mar</span>
+													<div class="clearfix"></div>
+													<span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="notification-message">
+										<a href="#">
+											<div class="list-item">
+												<div class="list-left">
+													<span class="avatar">
+														<img alt="" src="assets/img/profiles/avatar-05.jpg">
+													</span>
+												</div>
+												<div class="list-body">
+													<span class="message-author">Mike Litorus</span>
+													<span class="message-time">3 Mar</span>
+													<div class="clearfix"></div>
+													<span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="notification-message">
+										<a href="#">
+											<div class="list-item">
+												<div class="list-left">
+													<span class="avatar">
+														<img alt="" src="assets/img/profiles/avatar-08.jpg">
+													</span>
+												</div>
+												<div class="list-body">
+													<span class="message-author"> Catherine Manseau </span>
+													<span class="message-time">27 Feb</span>
+													<div class="clearfix"></div>
+													<span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+												</div>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div class="topnav-dropdown-footer">
+								<a href="#">View all Messages</a>
+							</div>
+						</div>
+					</li>
+					<!-- /Message Notifications -->
+
+					<li class="nav-item dropdown has-arrow main-drop">
+						<a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+							<span class="user-img"><img src="assets/img/profiles/avatar-21.jpg" alt="">
+							<span class="status online"></span></span>
+							<span>Admin</span>
+						</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="profile.html">My Profile</a>
+							<a class="dropdown-item" href="settings.html">Settings</a>
+							<a class="dropdown-item" href="login.html">Logout</a>
+						</div>
+					</li>
+				</ul>
+				<!-- /Header Menu -->
+				
+				<!-- Mobile Menu -->
+				<div class="dropdown mobile-user-menu">
+					<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+					<div class="dropdown-menu dropdown-menu-right">
+						<a class="dropdown-item" href="profile.html">My Profile</a>
+						<a class="dropdown-item" href="settings.html">Settings</a>
+						<a class="dropdown-item" href="login.html">Logout</a>
+					</div>
+				</div>
+				<!-- /Mobile Menu -->
+				
+            </div>
+			<!-- /Header -->
+			<!-- Sidebar -->
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-inner slimscroll">
+                	<form action="search.html" class="mobile-view">
+						<input class="form-control" type="text" placeholder="Search here">
+						<button class="btn" type="button"><i class="fa fa-search"></i></button>
+					</form>
+					<div class="sidebar-menu">
+						<ul>
+							<li> 
+								<a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> <span>Back to Home</span></a>
+							</li>
+				              <li class="active"> 
+				                <a href="email.html"><i class="fa fa-envelope menu-icon" aria-hidden="true"></i> <span>Inbox <span class="mail-count">(21)</span></span></a>
+				              </li>
+				            <li> 
+				                <a href="#"><i class="fa fa-star menu-icon" aria-hidden="true"></i> <span>Starred</span></a>
+				              </li>
+				            <li> 
+				                <a href="#"><i class="fa fa-paper-plane menu-icon" aria-hidden="true"></i> <span>Sent Mail</span></a>
+				            </li>
+				            <li> 
+				                <a href="#"><i class="fa fa-trash menu-icon" aria-hidden="true"></i> <span>Trash</span></a>
+				            </li>
+				            <li> 
+				                <a href="#"><i class="fa fa-folder-open-o menu-icon" aria-hidden="true"></i> <span>Draft <span class="mail-count">(8)</span></span></a>
+				            </li>
+							<li class="menu-title xs-hidden">Label <a href="#"><i class="fa fa-plus"></i></a></li>
+							<li class="xs-hidden"> 
+								<a href="#"><i class="fa fa-circle text-success mail-label"></i> Work</a>
+							</li>
+							<li class="xs-hidden"> 
+								<a href="#"><i class="fa fa-circle text-danger mail-label"></i> Office</a>
+							</li>
+							<li class="xs-hidden"> 
+								<a href="#"><i class="fa fa-circle text-warning mail-label"></i> Personal</a>
+							</li>
+						</ul>
+					</div>
+                </div>
+            </div>
+			<!-- /Sidebar -->
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+			
+				<!-- Page Content -->
+                <div class="content container-fluid">
+
+                	<div class="crms-title row bg-white">
+			            <div class="col  p-0">
+			                <h3 class="page-title m-0">
+			                <span class="page-title-icon bg-gradient-primary text-white me-2">
+			                  <i class="fa fa-envelope menu-icon" aria-hidden="true"></i>
+			                </span> View Message </h3>
+			            </div>
+			            <div class="col p-0 text-end">
+			                <ul class="breadcrumb bg-white float-end m-0 ps-0 pe-0">
+			                  <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+			                  <li class="breadcrumb-item active">Message</li>
+			                </ul>
+			            </div>
+			        </div>
+				
+					<!-- Page Header -->
+					<div class="page-header py-3 mb-0">
+						<div class="row align-items-center">
+							<div class="col">
+								<h3 class="page-title">View Message</h3>
+							</div>
+							<div class="col-auto float-end ms-auto">
+								<a href="#" data-bs-toggle="modal" data-bs-target="#compose-mail" class="add btn btn-gradient-primary font-weight-bold text-white todo-list-add-btn btn-rounded"><i class="fa fa-plus"></i> Compose</a>
+							</div>
+						</div>
+					</div>
+					<!-- /Page Header -->
+			
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="card mb-0">
+								<div class="card-body">
+									<div class="mailview-content">
+										<div class="mailview-header">
+											<div class="row">
+												<div class="col-sm-9">
+													<div class="text-ellipsis m-b-10">
+														<span class="mail-view-title">CRMS Bootstrap Admin Template</span>
+													</div>
+												</div>
+												<div class="col-sm-3">
+													<div class="mail-view-action">
+														<div class="btn-group">
+															<button type="button" class="btn btn-white btn-sm" data-bs-toggle="tooltip" title="Delete"> <i class="fa fa-trash-o"></i></button>
+															<button type="button" class="btn btn-white btn-sm" data-bs-toggle="tooltip" title="Reply"> <i class="fa fa-reply"></i></button>
+															<button type="button" class="btn btn-white btn-sm" data-bs-toggle="tooltip" title="Forward"> <i class="fa fa-share"></i></button>
+														</div>
+														<button type="button" class="btn btn-white btn-sm" data-bs-toggle="tooltip" title="Print"> <i class="fa fa-print"></i></button>
+													</div>
+												</div>
+											</div>
+											<div class="sender-info">
+												<div class="sender-img">
+													<img width="40" alt="" src="assets/img/profiles/avatar-02.jpg" class="rounded-circle">
+												</div>
+												<div class="receiver-details float-start">
+													<span class="sender-name">John Doe (johnjoe@example.com)</span>
+													<span class="receiver-name">
+														to
+														<span>me</span>, <span>Richard</span>, <span>Paul</span>
+													</span>	
+												</div>	
+												<div class="mail-sent-time">
+													<span class="mail-time">18 Feb 2019 9:42 AM</span>
+												</div>
+												<div class="clearfix"></div>
+											</div>
+										</div>
+										<div class="mailview-inner">
+											<p>Hello Richard,</p>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+											<p>Thanks,<br>
+											John Doe</p>
+										</div>
+									</div>
+									<div class="mail-attachments">
+										<p><i class="fa fa-paperclip"></i> 2 Attachments - <a href="#">View all</a> | <a href="#">Download all</a></p>
+										<ul class="attachments clearfix">
+											<li>
+												<div class="attach-file"><i class="fa fa-file-pdf-o"></i></div>
+												<div class="attach-info"> <a href="#" class="attach-filename">daily_meeting.pdf</a> <div class="attach-fileize"> 842 KB</div></div>
+											</li>
+											<li>
+												<div class="attach-file"><i class="fa fa-file-word-o"></i></div>
+												<div class="attach-info"> <a href="#" class="attach-filename">documentation.docx</a> <div class="attach-fileize"> 2,305 KB</div></div>
+											</li>
+											<li>
+												<div class="attach-file"><img src="assets/img/placeholder.jpg" alt="Attachment"></div>
+												<div class="attach-info"> <a href="#" class="attach-filename">webdesign.png</a> <div class="attach-fileize"> 1.42 MB</div></div>
+											</li>
+											<li>
+												<div class="attach-file"><img src="assets/img/placeholder.jpg" alt="Attachment"></div>
+												<div class="attach-info"> <a href="#" class="attach-filename">webdevelopment.png</a> <div class="attach-fileize"> 1.1 MB</div></div>
+											</li>
+										</ul>
+									</div>
+									<div class="mailview-footer">
+										<div class="row">
+											<div class="col-sm-6 left-action">
+												<button type="button" class="btn btn-white"><i class="fa fa-reply"></i> Reply</button>
+												<button type="button" class="btn btn-white"><i class="fa fa-share"></i> Forward</button>
+											</div>
+											<div class="col-sm-6 right-action">
+												<button type="button" class="btn btn-white"><i class="fa fa-print"></i> Print</button>
+												<button type="button" class="btn btn-white"><i class="fa fa-trash-o"></i> Delete</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                </div>
+				<!-- /Page Content -->
+				
+			</div>
+			<!-- /Page Wrapper -->
+			
+        </div>
+		<!-- /Main Wrapper -->
+
+		 <!--modal section starts here-->
+    <div class="modal fade right" id="compose-mail">
+          <div class="modal-dialog">
+            <button type="button" class="close md-close" data-bs-dismiss="modal">&times;</button>
+            <div class="modal-content">
+            
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">Compose New Mail</h4>
+                <button type="button" class="close xs-close" data-bs-dismiss="modal">&times;</button>
+              </div>
+              
+              <!-- Modal body -->
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="card mb-0">
+                      <div class="card-body">
+                        <form>
+                          <div class="form-group">
+                            <input type="email" placeholder="To" class="form-control">
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <input type="email" placeholder="Cc" class="form-control">
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <input type="email" placeholder="Bcc" class="form-control">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <input type="text" placeholder="Subject" class="form-control">
+                          </div>
+                          <div class="form-group">
+                            <textarea rows="4" class="form-control summernote" placeholder="Enter your message here"></textarea>
+                          </div>
+                          <div class="form-group mb-0">
+                            <div class="text-center">
+                              <button class="btn btn-primary"><span>Send</span> <i class="fa fa-send m-l-5"></i></button>
+                              <button class="btn btn-success m-l-5" type="button"><span>Draft</span> <i class="fa fa-floppy-o m-l-5"></i></button>
+                              <button class="btn btn-danger m-l-5" type="button"><span>Delete</span> <i class="fa fa-trash-o m-l-5"></i></button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+           
+            </div>
+          </div>
+        </div>
+
+
+        <!--theme settings modal-->
+
+		<div class="modal right fade settings" id="settings"  role="dialog" aria-modal="true">
+			<div class="toggle-close">
+				  <div class="toggle" data-bs-toggle="modal" data-bs-target="#settings"><i class="fa fa-cog fa-w-16 fa-spin fa-2x"></i>
+				  </div>
+	   
+			</div>
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+
+					<div class="modal-header p-3">
+						<h4 class="modal-title" id="myModalLabel2">Theme Customizer</h4>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+					</div>
+
+					<div class="modal-body pb-3">
+						<div class="scroll">
+						
+						<div>
+							<ul class="list-group">
+								<li class="list-group-item border-0">
+								  <div class="row">
+									<div class="col">
+									  <h5 class="pb-2">Primary Skin</h5>
+									</div>
+									<div class="col text-end d-none">
+									  <a class="reset text-white bg-dark" id="ChangeprimaryDefault">Reset Default</a>
+									</div>
+								  </div>
+								  <div class="theme-settings-swatches">
+									 <div class="themes">
+											<div class="themes-body">
+												<ul id="theme-changes" class="theme-colors border-0 list-inline-item list-unstyled mb-0">
+													
+													<li class="theme-title">Solid Color</li>
+													<li class="list-inline-item"><span onclick="toggleTheme('style')" class="theme-defaults bg-warnings"  ></span></li>
+													<li class="list-inline-item"><span onclick="toggleTheme('style-green')" class="theme-solid-purple bg-warnings"  ></span></li>
+													<li class="list-inline-item"><span onclick="toggleTheme('style-blue')" class="theme-solid-black bg-blue"></span></li>
+													<li class="list-inline-item"><span onclick="toggleTheme('style-orange')" class="theme-solid-pink bg-orange"></span></li>
+													<li class="list-inline-item"><span onclick="toggleTheme('style-pink')" class="theme-solid-pink bg-pink"></span></li> 
+													<li class="list-inline-item"><span onclick="toggleTheme('style-purple')" class="theme-solid-purle bg-purple"></span></li> 
+													<li class="list-inline-item"><span onclick="toggleTheme('style-red')" class="theme-solid-danger bg-danger"></span></li> 
+													<li><br /></li>
+													<li><hr /></li>
+
+													<li class="theme-title">Gradient Color</li>
+													
+
+													<li class="list-inline-item"><span onclick="toggleTheme('style-gradient-blue')" class="theme-orange bg-sunny-mornings"></span></li>
+													<li class="list-inline-item"><span onclick="toggleTheme('style-gradient-green')" class="theme-blue bg-tempting-azures"></span></li> 
+													<li class="list-inline-item"><span onclick="toggleTheme('style-gradient-maroon')" class="theme-grey bg-amy-crisps"></span></li>
+													<li class="list-inline-item"><span onclick="toggleTheme('style-gradient-orange')" class="theme-lgrey bg-mean-fruits"></span></li>
+													<li class="list-inline-item"><span onclick="toggleTheme('style-gradient-pink')" class="theme-dblue bg-malibu-beachs"></span></li> 
+												</ul>
+											</div>
+										</div>
+
+									 
+								  </div>
+								  </li>
+							  </ul>
+						  </div>
+						  <div>
+							<ul class="list-group">
+							  <li class="list-group-item border-0">
+								 <div class="row">
+								  <div class="col">
+									<h5 class="pb-2">Header Style</h5>
+								  </div>
+								  <div class="col text-end">
+									<a class="reset text-white bg-dark" id="ChageheaderDefault">Reset Default</a>
+								  </div>
+								</div>
+								<div class="theme-settings-swatches">
+									<div class="themes">
+										<div class="themes-body">
+											<ul id="theme-change1" class="theme-colors border-0 list-inline-item list-unstyled mb-0">
+													<li class="theme-title">Solid Color</li>
+													<li class="list-inline-item"><span class="header-solid-black bg-black"></span></li>
+													<li class="list-inline-item"><span class="header-solid-pink bg-primary"></span></li>
+													<li class="list-inline-item"><span class="header-solid-orange bg-secondary1"></span></li> 
+													<li class="list-inline-item"><span class="header-solid-purple bg-success"></span></li>
+													<!-- <li class="list-inline-item"><span class="header-solid-blue bg-info"></span></li> -->
+													<li class="list-inline-item"><span class="header-solid-green bg-warnings"></span></li>
+													<li><br></li>
+													<li><hr></li>
+
+													<li class="theme-title">Gradient Color</li>
+
+													<li class="list-inline-item"><span class="header-gradient-color1 bg-sunny-morning"></span></li>
+													<li class="list-inline-item"><span class="header-gradient-color2 bg-tempting-azure"></span></li> 
+													<li class="list-inline-item"><span class="header-gradient-color3 bg-amy-crisp"></span></li>
+													<li class="list-inline-item"><span class="header-gradient-color4 bg-mean-fruit"></span></li>
+													<li class="list-inline-item"><span class="header-gradient-color5 bg-malibu-beach"></span></li> 
+													<li class="list-inline-item"><span class="header-gradient-color6 bg-ripe-malin"></span></li> 
+													<li class="list-inline-item"><span class="header-gradient-color7 bg-plum-plate"></span></li>
+													
+											</ul>
+										</div>
+									</div>
+									
+								  </div>
+							  </li>
+							</ul>
+						  </div>
+						  <div>
+							<ul class="list-group m-0">
+								<li class="list-group-item border-0">
+								  <div class="row">
+									<div class="col">
+									  <h5 class="pb-2">Apps Sidebar Style</h5>
+									</div>
+									<div class="col  text-end">
+									  <a class="reset text-white bg-dark" id="ChagesidebarDefault">Reset Default</a>
+									</div>
+								  </div>
+								  <div class="theme-settings-swatches">
+									  <div class="themes">
+										  <div class="themes-body">
+											  <ul id="theme-change2" class="theme-colors border-0 list-inline-item list-unstyled">
+													  <li class="theme-title">Solid Color</li>
+													  <li class="list-inline-item"><span class="sidebar-solid-black bg-black"></span></li>
+													  <li class="list-inline-item"><span class="sidebar-solid-pink bg-primary"></span></li>
+													  <li class="list-inline-item"><span class="sidebar-solid-orange bg-secondary1"></span></li> 
+													  <li class="list-inline-item"><span class="sidebar-solid-purple bg-success"></span></li>
+													  <!-- <li class="list-inline-item"><span class="sidebar-solid-blue bg-info"></span></li> -->
+													  <li class="list-inline-item"><span class="sidebar-solid-green bg-warnings"></span></li>
+													  <li><br></li>
+													  <li><hr></li>
+
+													  <li class="theme-title">Gradient Color</li>
+
+													  <li class="list-inline-item"><span class="sidebar-gradient-color1 bg-sunny-morning"></span></li>
+													  <li class="list-inline-item"><span class="sidebar-gradient-color2 bg-tempting-azure"></span></li> 
+													  <li class="list-inline-item"><span class="sidebar-gradient-color3 bg-amy-crisp"></span></li>
+													  <li class="list-inline-item"><span class="sidebar-gradient-color4 bg-mean-fruit"></span></li>
+													  <li class="list-inline-item"><span class="sidebar-gradient-color5 bg-malibu-beach"></span></li> 
+													  <li class="list-inline-item"><span class="sidebar-gradient-color6 bg-ripe-malin"></span></li> 
+													  <li class="list-inline-item"><span class="sidebar-gradient-color7 bg-plum-plate"></span></li>
+													  
+											  </ul>
+										  </div>
+									  </div>
+									  
+									</div>
+								</li>
+							  </ul>
+							<div class="row Default-font">
+								<div class="col">
+									<h5 class="pb-2">Font Style</h5>
+								</div>
+								<div class="col text-end">
+									<a class="reset text-white bg-dark font-Default">Reset Default</a>
+								</div>
+							</div>
+							<ul class="list-inline-item list-unstyled font-family border-0 p-0" id="theme-change">
+							  
+							  <li class="list-inline-item roboto-font" >Roboto</li>
+							  <li class="list-inline-item poppins-font">Poppins</li>
+							  <li class="list-inline-item montserrat-font" >Montserrat</li>
+							  <li class="list-inline-item inter-font">Inter</li>
+							</ul>
+						</div>
+						
+					</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!--theme settings-->
+        <div class="sidebar-contact">
+          	<div class="toggle" data-bs-toggle="modal" data-bs-target="#settings"><i class="fa fa-cog fa-w-16 fa-spin fa-2x"></i></div>
+           
+        </div>
+      
+
+		<!-- jQuery -->
+        <script src="assets/js/jquery-3.6.0.min.js"></script>
+
+		<!-- Bootstrap Core JS -->
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Slimscroll JS -->
+		<script src="assets/js/jquery.slimscroll.min.js"></script>
+
+		 <!-- Summernote JS -->
+    	<script src="assets/plugins/summernote/dist/summernote-bs4.min.js"></script>
+
+    	 <!-- Custom JS -->
+		<!-- theme JS -->
+		<script src="assets/js/theme-settings.js"></script>
+
+		<!-- Custom JS -->
+		<script src="assets/js/app.js"></script>
+
+    </body>
+</html>
