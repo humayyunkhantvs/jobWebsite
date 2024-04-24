@@ -258,7 +258,7 @@ class ApiController extends Controller
                     $backgroundcolor = $template->color;
                     $imageName = $template->image;
 
-                    $allCategories = Category::all();
+                    $allCategories = Category::where('user_id', $user->id)->get();
 
                     $jobs = Job::join('categories', 'jobs.category_id', '=', 'categories.id')->where($whereArray)->where('jobs.job_status', 'published')->orderBy('jobs.title', $sort)->select('jobs.*', 'categories.name as category_name')->get();
 

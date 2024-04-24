@@ -110,6 +110,7 @@
                 try {
                     const hash = document.querySelector("#job-posting").getAttribute('data-hash');
                     const baseUrl = "http://127.0.0.1:8000/api/jobs-filter/"+ hash + query;
+                    // const baseUrl = "https://powrserver2.com/api/jobs-filter/"+ hash + query;
                     const response = await fetch(baseUrl);
                     const html = await response.json();
 
