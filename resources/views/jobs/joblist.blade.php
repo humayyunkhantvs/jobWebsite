@@ -73,7 +73,6 @@
                             <option value="{{ $state }}">{{ $state }}</option>
                             @endforeach
                         </select>
-
                     </div>
 
                     <div class="col-md-3 my-1 sorting-filter">
@@ -88,22 +87,22 @@
         
         <section class="my-3" id="job-posting" data-hash="{{$hash}}">
             @foreach ($jobs as $job)
-            <div job_id="{{$job->id}}" class="job-posting container h-50 p-5 mb-2 d-block">
-                <h2 class="job_title">{{$job->title}} - {{$job->company}}</h2>
-            <p class="job_location"> <strong>Location:</strong> <span class="job_address_line_1">{{$job->address}}</span>, <span class="job_city">{{$job->city}}</span>, <span class="job_state">{{$job->state}}</span> <span class="job_zip">{{$job->zip}}</span>, <span class="job_country">{{$job->country}}</span> </p>
-            <p> <strong>Job Category:</strong> <span class="job_category">{{$job->category_name}}</span> </p>
-            <a target="_blank" href="{{ route('details-job', ['job' => base64_encode($job->id)]) }}" class="btn job-button-test text-white" style="background-color: {{ !empty($backgroundcolor) ? $backgroundcolor : '#849c3d' }};">Job Details</a>
-        </div>
-        @endforeach
-    </section>
+            @php
+            $jobId = Crypt::encryptString($job->id);
+            @endphp
+                <div job_id="{{$job->id}}" class="job-posting container h-50 p-5 mb-2 d-block">
+                    <h2 class="job_title">{{$job->title}} - {{$job->company}}</h2>
+                    <p class="job_location"> <strong>Location:</strong> <span class="job_address_line_1">{{$job->address}}</span>, <span class="job_city">{{$job->city}}</span>, <span class="job_state">{{$job->state}}</span> <span class="job_zip">{{$job->zip}}</span>, <span class="job_country">{{$job->country}}</span> </p>
+                    <p> <strong>Job Category:</strong> <span class="job_category">{{$job->category_name}}</span> </p>
+                    <button class="btn job-button-test text-white show-job-details" style="background-color: {{ !empty($backgroundcolor) ? $backgroundcolor : '#849c3d' }};" data-hash="{{$hash}}" data-id="{{$jobId}}">Job Details</button>
+                </div>
+            @endforeach
+        </section>
 
-
-    
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.tiny.cloud/1/eh83qrdiozahqd9f0coxhcr6icqz5xst3qtlykm0lm85fdu1/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="{{ asset('user/assets/js/add_applicant.js?v=11')}}"></script>
-    <!-- <script type="text/javascript" src="assets/js/script.js?v=f"></script> -->
 
     <script>
         $(document).ready(function() {
@@ -123,10 +122,21 @@
                     }
                     document.getElementById("error").innerText = '';
                     const jobPostingContainer = document.getElementById("job-posting").innerHTML = html.jobs_html;
+                    applyFilters();
                 } catch (error) {
                     const jobPostingContainer = document.getElementById("job-posting").innerHTML = '';
                     document.getElementById("error").innerText = error;
                 }
+            }
+
+            function redirectToJobDetails(jobId, hash) {
+                let baseUrl = window.location.href;
+                if(baseUrl.indexOf("?") > 0) {
+                    baseUrl = baseUrl.substring(0, baseUrl.indexOf("?"));
+                }
+
+                baseUrl += "?hash="+hash+"&id="+jobId;
+                window.open(baseUrl, '_blank');
             }
 
             // Function to apply filters
@@ -135,6 +145,13 @@
                 let locationFilterObj = document.getElementById("location-filter");
                 let searchFilterObj = document.getElementById("search-filter");
                 let sortingFilterObj = document.getElementById("sorting-filter");
+                let jobDetailsBtns = document.querySelectorAll(".show-job-details");
+
+                for (let i = 0; i < jobDetailsBtns.length; i++) {
+                    jobDetailsBtns[i].addEventListener("click", function() {
+                        redirectToJobDetails(this.getAttribute('data-id'), this.getAttribute('data-hash'));
+                    });
+                }
 
                 // Event listener for category filter
                 categoryFilterObj.addEventListener("change", function() {

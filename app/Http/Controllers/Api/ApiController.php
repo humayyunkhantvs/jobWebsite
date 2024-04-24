@@ -9,6 +9,8 @@ use App\Models\Job;
 use App\Models\Category;
 use App\Models\Template;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Crypt;
+
 
 
 class ApiController extends Controller
@@ -66,21 +68,13 @@ class ApiController extends Controller
 
             if (Job::where($whereArray)->exists()) {
                 $job = Job::where($whereArray)->first();
-                // Fetch category details based on category_id
                 $category = Category::find($job->category_id);
                 $categoryName =  $category->name;
                 $job['category_name'] = $categoryName;
                 $template = Template::where('user_id', $user->id)->where('status', 1)->first();
-                // $imageName = Template::where('user_id', $user->id)->value('image');
                 $backgroundcolor = $template->color;
                 $imageName = $template->image;
-                // $viewContent = View::make('jobs.test', compact('job', 'imageName', 'categoryName'))->render();
                 return view('jobs.details', compact('job', 'imageName', 'backgroundcolor', 'categoryName'));
-                // return response()->json([
-                //     'status' => 200,
-                //     'message' => 'Successfully loaded',
-                //     'html' => $viewContent,
-                // ], 200);
             } else {
                 return response()->json([
                     'status' => 404,
@@ -191,54 +185,96 @@ class ApiController extends Controller
 
     public function showJobs(Request $request)
     {
-        $hash = $request->hash;
+        if ($request->filled('hash') && $request->filled('id')) {
+            // get only single job from the database
+            $hash = $request->get('hash');
+            $jobId = $request->get('id');
 
-        if (User::where('hash', $hash)->exists()) {
-            $user = User::where('hash', $hash)->first();
-            $whereArray = [];
-            $whereArray[] = ['jobs.user_id', '=', $user->id];
+            if (User::where('hash', $hash)->exists()) {
+                $user = User::where('hash', $hash)->first();
+                $whereArray = [];
+                $whereArray[] = ['user_id', '=', $user->id];
+                $whereArray[] = ['id', '=', Crypt::decryptString($jobId)];
 
-            if (Job::where('user_id', $user->id)->exists()) {
 
-                if ($request->filled('category')) {
-                    $whereArray[] = ['jobs.category_id', '=', trim($request->category)];
-                }
+                if (Job::where($whereArray)->exists()) {
+                    $job = Job::where($whereArray)->first();
+                    $category = Category::find($job->category_id);
+                    $categoryName =  $category->name;
+                    $job['category_name'] = $categoryName;
+                    $template = Template::where('user_id', $user->id)->where('status', 1)->first();
+                    $backgroundcolor = $template->color;
+                    $imageName = $template->image;
 
-                if ($request->filled('location')) {
-                    $location = explode(",", $request->location);
-                    $whereArray[] = ['jobs.state', '=', trim($location[0])];
-                }
+                    // Prepare the data to be returned as JSON
+                    $jsonData = [
+                        'message' => 'Jobs found!',
+                        'jobs_html' => view('jobs.details', compact('job', 'imageName', 'backgroundcolor', 'categoryName'))->render(),
+                    ];
 
-                if ($request->filled('search_term')) {
-                    $whereArray[] = ['jobs.title', 'like', '%' . $request->search_term . '%'];
-                }
-
-                if ($request->filled('sort')) {
-                    $sort = $request->sort;
+                    return response()->json($jsonData, 200);
                 } else {
-                    $sort = 'ASC';
+                    return response()->json([
+                        'status' => 404,
+                        'message' => 'Job not found',
+                    ], 404);
                 }
-
-                $template = Template::where('user_id', $user->id)->where('status', 1)->first();
-                $backgroundcolor = $template->color;
-                $imageName = $template->image;
-
-                $allCategories = Category::all();
-
-                $jobs = Job::join('categories', 'jobs.category_id', '=', 'categories.id')->where($whereArray)->where('jobs.job_status', 'published')->orderBy('jobs.title', $sort)->select('jobs.*', 'categories.name as category_name')->get();
-
-                // Prepare the data to be returned as JSON
-                $jsonData = [
-                    'message' => 'Jobs found!',
-                    'jobs_html' => view('jobs.joblist', compact('jobs', 'imageName', 'backgroundcolor', 'allCategories', 'hash'))->render(),
-                ];
-
-                return response()->json($jsonData, 200);
             } else {
-                return response()->json(['message' => 'Jobs not found!'], 404);
+                return response()->json([
+                    'status' => 404,
+                    'message' => 'User not found',
+                ], 404);
             }
         } else {
-            return response()->json(['message' => 'User not found!'], 404);
+            // Get all the jobs from the database
+            $hash = $request->hash;
+            if (User::where('hash', $hash)->exists()) {
+                $user = User::where('hash', $hash)->first();
+                $whereArray = [];
+                $whereArray[] = ['jobs.user_id', '=', $user->id];
+
+                if (Job::where('user_id', $user->id)->exists()) {
+
+                    if ($request->filled('category')) {
+                        $whereArray[] = ['jobs.category_id', '=', trim($request->category)];
+                    }
+
+                    if ($request->filled('location')) {
+                        $location = explode(",", $request->location);
+                        $whereArray[] = ['jobs.state', '=', trim($location[0])];
+                    }
+
+                    if ($request->filled('search_term')) {
+                        $whereArray[] = ['jobs.title', 'like', '%' . $request->search_term . '%'];
+                    }
+
+                    if ($request->filled('sort')) {
+                        $sort = $request->sort;
+                    } else {
+                        $sort = 'ASC';
+                    }
+
+                    $template = Template::where('user_id', $user->id)->where('status', 1)->first();
+                    $backgroundcolor = $template->color;
+                    $imageName = $template->image;
+
+                    $allCategories = Category::all();
+
+                    $jobs = Job::join('categories', 'jobs.category_id', '=', 'categories.id')->where($whereArray)->where('jobs.job_status', 'published')->orderBy('jobs.title', $sort)->select('jobs.*', 'categories.name as category_name')->get();
+
+                    // Prepare the data to be returned as JSON
+                    $jsonData = [
+                        'message' => 'Jobs found!',
+                        'jobs_html' => view('jobs.joblist', compact('jobs', 'imageName', 'backgroundcolor', 'allCategories', 'hash'))->render(),
+                    ];
+
+                    return response()->json($jsonData, 200);
+                } else {
+                    return response()->json(['message' => 'Jobs not found!'], 404);
+                }
+            } else {
+                return response()->json(['message' => 'User not found!'], 404);
+            }
         }
     }
 
