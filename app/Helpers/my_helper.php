@@ -16,7 +16,7 @@ function hash_token()
 
 
 
-function jobs_html($jobs, $hash = '', $allCategories, $imageName)
+function jobs_html($jobs, $hash, $allCategories, $imageName)
 {
     $jobs_html = "";
     $unique_job_categories = [];
@@ -65,10 +65,10 @@ function jobs_html($jobs, $hash = '', $allCategories, $imageName)
             "</span>";
         $jobs_html .= "  </p>";
         $jobs_html .=
-        // '  <a  target="_blank" href="#" data-hash="' . $hash . '" data-id="' . $job['id'] . '" class="btn btn-primary job-button-test job_details">Job Details</a>';
+            // '  <a  target="_blank" href="#" data-hash="' . $hash . '" data-id="' . $job['id'] . '" class="btn btn-primary job-button-test job_details">Job Details</a>';
 
-        // '  <a target="_blank" href="' . route('job-details', ['hash' => $hash, 'job' => $job['id']]) . '"  class="btn btn-primary job-button-test job_details">Job Details</a>';
-        '  <a target="_blank" href="' . route('details-job', ['hash' => $hash, 'job' => base64_encode($job['id'])]) . '"  class="btn btn-primary job-button-test">Job Details</a>';
+            // '  <a target="_blank" href="' . route('job-details', ['hash' => $hash, 'job' => $job['id']]) . '"  class="btn btn-primary job-button-test job_details">Job Details</a>';
+            '  <a target="_blank" href="' . route('details-job', ['hash' => $hash, 'job' => base64_encode($job['id'])]) . '"  class="btn btn-primary job-button-test">Job Details</a>';
         $jobs_html .= "</div>";
 
         // Display the image name

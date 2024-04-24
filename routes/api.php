@@ -37,6 +37,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Route::get('jobs/{hash}', [ApiController::class, 'showJobs'])->name('jobs-listings')->middleware('cors');
 Route::get('jobs', [ApiController::class, 'showJobs'])->name('jobs-listings')->middleware('cors');
+Route::get('jobs-filter/{hash}', [ApiController::class, 'filterJobs'])->name('jobs-listings-filter')->middleware('cors');
 // Route::get('jobs/{hash}/{job}', [ApiController::class, 'index'])->name('job-details')->middleware('cors');
 Route::get('jobs/{hash}/{job}', [ApiController::class, 'index'])->name('job-details')->middleware('cors');
 // Route::get('details/{hash}/{job}', [ApiController::class, 'jobs_detail'])->name('details-job')->middleware('cors');

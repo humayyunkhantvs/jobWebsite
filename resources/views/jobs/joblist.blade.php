@@ -48,13 +48,11 @@
         <div class="container">
             <div class="row">
                 <div class="row">
-
                     <div class="col-md-3 my-1 search-filter">
                         <div class="input-group">
                             <input class="form-control border-end-0 border rounded-pill" type="text" name="search" placeholder="Search Jobs By Title..." id="search-filter">
                         </div>
                     </div>
-
 
                     <div class="col-md-3 my-1 category-filter">
                         <select class="form-select" name="category" id="category-filter">
@@ -64,7 +62,6 @@
                             @endforeach
                         </select>
                     </div>
-
 
                     <div class="col-md-3 my-1 location-filter">
                         <select class="form-select" name="location" id="location-filter">
@@ -79,8 +76,6 @@
 
                     </div>
 
-
-
                     <div class="col-md-3 my-1 sorting-filter">
                         <select class="form-select" name="sorting" id="sorting-filter">
                             <option value="ASC" selected>Alphabetical</option>
@@ -89,26 +84,21 @@
                     </div>
                 </div>
             </div>
-            <div id="error"></div>
-    </section>
-
-    <section class="my-3" id="job-posting">
-        @foreach ($jobs as $job)
-        <div job_id="{{$job->id}}" class="job-posting container h-50 p-5 mb-2 d-block">
-
-            <h2 class="job_title">{{$job->title}} - {{$job->company}}</h2>
+        </section>
+        
+        <section class="my-3" id="job-posting" data-hash="{{$hash}}">
+            @foreach ($jobs as $job)
+            <div job_id="{{$job->id}}" class="job-posting container h-50 p-5 mb-2 d-block">
+                <h2 class="job_title">{{$job->title}} - {{$job->company}}</h2>
             <p class="job_location"> <strong>Location:</strong> <span class="job_address_line_1">{{$job->address}}</span>, <span class="job_city">{{$job->city}}</span>, <span class="job_state">{{$job->state}}</span> <span class="job_zip">{{$job->zip}}</span>, <span class="job_country">{{$job->country}}</span> </p>
             <p> <strong>Job Category:</strong> <span class="job_category">{{$job->category_name}}</span> </p>
             <a target="_blank" href="{{ route('details-job', ['job' => base64_encode($job->id)]) }}" class="btn job-button-test text-white" style="background-color: {{ !empty($backgroundcolor) ? $backgroundcolor : '#849c3d' }};">Job Details</a>
-            <!-- <a target="_blank" href="' . route('details-job', ['job' => base64_encode($job->id]) . '" class="btn job-button-test text-white" style="background-color: {{ !empty($backgroundcolor) ? $backgroundcolor : '#849c3d' }};">Job Details</a> -->
-            <!-- <a target="_blank" href="http://127.0.0.1:8000/api/details/7kNZc3s5w08vSyoIXQLv/MTU=" class="btn job-button-test text-white" style="background-color: {{ !empty($backgroundcolor) ? $backgroundcolor : '#849c3d' }};">Job Details</a> -->
-
         </div>
         @endforeach
     </section>
 
 
-
+    
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.tiny.cloud/1/eh83qrdiozahqd9f0coxhcr6icqz5xst3qtlykm0lm85fdu1/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
@@ -117,38 +107,25 @@
 
     <script>
         $(document).ready(function() {
-
-            // var hash = '7kNZc3s5w08vSyoIXQLv';
-
-
             async function filterJobs(query = "") {
                 try {
-                    const baseUrl = "http://127.0.0.1:8000/api/jobs" + query;
+                    const hash = document.querySelector("#job-posting").getAttribute('data-hash');
+                    const baseUrl = "http://127.0.0.1:8000/api/jobs-filter/"+ hash + query;
                     const response = await fetch(baseUrl);
-                    // const html = await response.text();
                     const html = await response.json();
-                    console.log(html.jobs_html);
 
                     if (!response.ok) {
-                        throw new Error("Error fetching job data: " + response.status);
+                        if(response.status == 404){
+                            throw new Error("No jobs found against your search!");;
+                        }else {
+                            throw new Error("Something went wrong");
+                        }
                     }
-
-                    // document.getElementById("job-posting").innerHTML = html;
-
-
-                    
-                    // Parse the HTML string to create a DOM element
-                    // const tempElement = document.createElement('div');
-                    // tempElement.innerHTML = html;
-
-                    // Select the job-posting section and update its content
-                    // const jobPostingSection = tempElement.querySelector('#main_html1');
-                    const jobPostingContainer = document.getElementById("main_html1");
-                    jobPostingContainer.innerHTML = html.jobs_html;
+                    document.getElementById("error").innerText = '';
+                    const jobPostingContainer = document.getElementById("job-posting").innerHTML = html.jobs_html;
                 } catch (error) {
-                    console.error(error);
-
-                    document.getElementById("error").innerText = "An error occurred: " + error.message;
+                    const jobPostingContainer = document.getElementById("job-posting").innerHTML = '';
+                    document.getElementById("error").innerText = error;
                 }
             }
 
@@ -158,8 +135,6 @@
                 let locationFilterObj = document.getElementById("location-filter");
                 let searchFilterObj = document.getElementById("search-filter");
                 let sortingFilterObj = document.getElementById("sorting-filter");
-
-                // console.log(locationFilterObj);
 
                 // Event listener for category filter
                 categoryFilterObj.addEventListener("change", function() {
@@ -194,11 +169,7 @@
             }
 
             // Invoke applyFilters function to set up event listeners
-            
             applyFilters();
-
-            // Initial load of job listings
-            // filterJobs();
         });
     </script>
 </body>
